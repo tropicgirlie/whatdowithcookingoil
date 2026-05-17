@@ -1,0 +1,49 @@
+@import "tailwindcss";
+@import "maplibre-gl/dist/maplibre-gl.css";
+
+/* ── OilCycle theme ──────────────────────────────────────────────────────────
+   Earthy-but-modern palette. Olive green (recycle) + cream (paper) + amber
+   (the colour of clean oil) + ink. Tuned for warmth and trust. */
+
+@theme {
+  --color-cream: #f6f5f0;
+  --color-cream-2: #ecebe2;
+  --color-ink: #1c1d1a;
+  --color-ink-2: #3a3b36;
+  --color-muted: #6b6b63;
+  --color-line: #d9d8cc;
+
+  --color-olive: #1f6b3a;
+  --color-olive-2: #19562f;
+  --color-olive-soft: #e3efe6;
+
+  --color-amber: #f0c419;
+  --color-amber-2: #d9a90b;
+  --color-amber-soft: #fbf3d6;
+
+  --color-rust: #c45a26;
+
+  --font-sans: "InterVariable", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --radius-card: 14px;
+  --radius-pill: 9999px;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv02";
+  background: var(--color-cream);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* MapLibre attribution restyle to fit the theme */
+.maplibregl-ctrl-attrib {
+  font-size: 10px;
+  background: rgba(246, 245, 240, 0.85) !important;
+}
