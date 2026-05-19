@@ -25,9 +25,16 @@
 
   --font-sans: "InterVariable", ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
 
   --radius-card: 14px;
   --radius-pill: 9999px;
+}
+
+/* Fraunces optical sizing + soft axis tuning. Editorial headlines, not generic. */
+.font-serif {
+  font-family: var(--font-serif);
+  font-variation-settings: "opsz" 96, "SOFT" 50, "WONK" 0;
 }
 
 html, body, #root {

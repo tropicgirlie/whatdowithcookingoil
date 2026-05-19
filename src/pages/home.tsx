@@ -78,142 +78,161 @@ export default function HomePage() {
 
   return (
     <div className="flex-1 flex flex-col">
-      {/* Hero, image stacks on mobile, splits on desktop */}
-      <section className="w-full px-4 sm:px-8 lg:px-12 pt-8 lg:pt-20 pb-8 lg:pb-12">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.05fr_440px] gap-8 lg:gap-14 items-center">
-          <div className="relative order-first lg:order-last">
-            <img
-              src="/hero-kitchen.jpg"
-              alt="A glass bottle on a sunlit wooden counter, surrounded by potted herbs and plants in a warm cottage kitchen"
-              className="w-full aspect-[16/10] sm:aspect-[3/2] lg:aspect-[4/5] rounded-3xl lg:rounded-[2rem] object-cover shadow-xl lg:shadow-2xl"
-            />
-            <div className="absolute -bottom-4 left-4 sm:-bottom-5 sm:-left-5 flex items-center gap-3 px-3 py-2.5 sm:px-4 sm:py-3 bg-cream rounded-2xl shadow-xl border border-line/60">
-              <div className="flex items-center justify-center w-9 h-9 rounded-full bg-cream-2 flex-none">
-                <Droplet className="w-4 h-4 text-amber" fill="currentColor" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-[10px] font-medium text-muted uppercase tracking-wider">Today</span>
-                <span className="text-sm font-semibold text-ink leading-tight">
-                  {COUNT_BY_COUNTRY[country] ?? 0} centres listed in {country === 'UK' ? 'the UK' : 'Ireland'}
+      {/* Hero: editorial masthead with search-first prominence */}
+      <section className="w-full px-4 sm:px-8 lg:px-12 pt-8 sm:pt-12 lg:pt-16 pb-10">
+        <div className="max-w-5xl mx-auto">
+          {/* Masthead strip: small kicker + tiny photo medallion + count */}
+          <div className="flex items-center justify-between gap-4 pb-5 border-b border-line/60 mb-6 sm:mb-8">
+            <div className="flex items-center gap-3 sm:gap-4">
+              <img
+                src="/hero-kitchen.jpg"
+                alt="A bottle of oil on a sunlit wooden counter, surrounded by plants"
+                className="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover ring-2 ring-cream ring-offset-2 ring-offset-olive-soft/40 flex-none"
+              />
+              <div className="flex flex-col leading-tight">
+                <span className="text-[10px] sm:text-[11px] font-semibold tracking-[0.18em] uppercase text-olive-2">
+                  The honest locator · {COUNTRY_LABEL[country]}
+                </span>
+                <span className="text-xs sm:text-sm text-muted italic">
+                  {COUNT_BY_COUNTRY[country] ?? 0} drop-off points indexed, with sources
                 </span>
               </div>
             </div>
-          </div>
-          <div className="flex flex-col gap-6 items-center lg:items-start text-center lg:text-left mt-6 lg:mt-0">
-            <span className="text-xs font-semibold tracking-widest uppercase text-olive-2">For {COUNTRY_LABEL[country]} · v0.2</span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-ink max-w-2xl">
-              Where do I take my <span className="text-olive">used cooking oil</span>?
-            </h1>
-            <p className="text-base sm:text-lg text-ink-2 max-w-xl leading-relaxed">
-              A free, honest map of every household-friendly drop-off in {COUNTRY_LABEL[country]}.
-              No account, works offline, made by people who care.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Intent picker */}
-      <section className="w-full px-4 pb-6 flex flex-col items-center">
-        <p className="text-xs font-semibold uppercase tracking-widest text-muted text-center mb-3">
-          What stage are you at?
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-3xl">
-          <Link
-            to="/dispose"
-            className="group rounded-2xl border border-line/70 bg-cream p-4 flex flex-col gap-2 shadow-sm hover:border-olive/40 hover:bg-olive-soft/40 transition-colors"
-          >
-            <div className="flex items-center justify-between">
-              <span className="w-10 h-10 rounded-full bg-cream-2 grid place-items-center">
-                <Droplet className="w-4 h-4 text-olive" fill="currentColor" />
-              </span>
-              <ChevronRight className="w-4 h-4 text-muted group-hover:text-olive-2 transition-colors" />
-            </div>
-            <p className="font-semibold text-sm text-ink mt-2">One jar from cooking</p>
-            <p className="text-xs text-muted leading-snug">Wipe and bin small residues. Safe and approved.</p>
-          </Link>
-
-          <button
-            type="button"
-            onClick={focusSearch}
-            className="group rounded-2xl border-2 border-olive/40 bg-olive-soft p-4 flex flex-col gap-2 shadow-md text-left hover:bg-olive-soft/80 transition-colors"
-          >
-            <div className="flex items-center justify-between">
-              <span className="w-10 h-10 rounded-full bg-olive grid place-items-center">
-                <GlassWater className="w-4 h-4 text-cream" />
-              </span>
-              <ChevronRight className="w-4 h-4 text-olive-2" />
-            </div>
-            <p className="font-semibold text-sm text-ink mt-2">Several bottles saved up</p>
-            <p className="text-xs text-ink-2 leading-snug">Find a verified drop-off near you.</p>
-          </button>
-
-          <Link
-            to="/pickup"
-            className="group rounded-2xl border border-line/70 bg-cream p-4 flex flex-col gap-2 shadow-sm hover:border-amber/40 hover:bg-amber-soft/40 transition-colors"
-          >
-            <div className="flex items-center justify-between">
-              <span className="w-10 h-10 rounded-full bg-amber-soft grid place-items-center">
-                <Truck className="w-4 h-4 text-amber-2" />
-              </span>
-              <ChevronRight className="w-4 h-4 text-muted group-hover:text-amber-2 transition-colors" />
-            </div>
-            <p className="font-semibold text-sm text-ink mt-2">I'd prefer pickup</p>
-            <p className="text-xs text-muted leading-snug">The honest status of pickup in Ireland.</p>
-          </Link>
-        </div>
-      </section>
-
-      {/* Location panel */}
-      <section className="w-full px-4 pb-12 flex flex-col items-center gap-4">
-        <div
-          className={cn(
-            'w-full max-w-md flex flex-col gap-3 p-5 bg-cream border border-line/60 rounded-3xl shadow-sm transition-shadow',
-            highlightSearch && 'ring-2 ring-olive ring-offset-2 ring-offset-cream',
-          )}
-        >
-          <button
-            type="button"
-            disabled={busy !== 'idle'}
-            onClick={handleUseLocation}
-            className="w-full inline-flex items-center justify-center gap-2 h-12 rounded-full bg-olive text-cream font-semibold hover:bg-olive-2 disabled:opacity-60 disabled:cursor-progress transition-colors"
-          >
-            {busy === 'geolocate' ? <Loader2 className="w-4 h-4 animate-spin" /> : <Locate className="w-4 h-4" />}
-            Use my location
-          </button>
-
-          <div className="flex items-center gap-2 text-xs text-muted">
-            <span className="flex-1 h-px bg-line/80" />
-            <span>or</span>
-            <span className="flex-1 h-px bg-line/80" />
-          </div>
-
-          <form onSubmit={handleSearch} className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted" />
-            <input
-              type="text"
-              value={query}
-              onChange={e => setQuery(e.target.value)}
-              placeholder={postcodeLabel(country)}
-              className="w-full h-12 rounded-full border border-line/80 bg-cream pl-11 pr-28 text-sm placeholder:text-muted focus:outline-none focus:border-olive focus:ring-2 focus:ring-olive/20"
-            />
-            <button
-              type="submit"
-              disabled={busy !== 'idle' || !query.trim()}
-              className="absolute right-1.5 top-1/2 -translate-y-1/2 h-9 px-4 rounded-full bg-ink text-cream text-xs font-semibold hover:bg-ink-2 disabled:opacity-50"
+            <span
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-soft text-amber-2 text-[11px] font-semibold tracking-wider uppercase rotate-[-1.5deg] shadow-sm border border-amber/30"
+              aria-hidden="true"
             >
-              {busy === 'geocode' ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Search'}
-            </button>
-          </form>
+              <Droplet className="w-3 h-3" fill="currentColor" /> v0.2
+            </span>
+          </div>
 
-          {error && <p className="text-sm text-rust">{error}</p>}
+          {/* Headline + search, search is the main event */}
+          <div className="grid lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-12 items-start">
+            <div className="flex flex-col gap-4">
+              <h1 className="font-serif text-[2.6rem] sm:text-5xl lg:text-[3.6rem] font-semibold leading-[1.02] tracking-tight text-ink">
+                Where do I take my{' '}
+                <em className="not-italic text-olive" style={{ fontVariationSettings: '"opsz" 144, "SOFT" 100, "WONK" 1' }}>
+                  used&nbsp;cooking&nbsp;oil
+                </em>?
+              </h1>
+              <p className="text-base sm:text-lg text-ink-2 leading-relaxed max-w-lg">
+                Some councils accept it. Some don't. Cork City says no, Fingal says yes,
+                most don't say anything at all. We've checked, so you don't drive across
+                town to be turned away.
+              </p>
+            </div>
+
+            <div
+              className={cn(
+                'flex flex-col gap-3 p-5 sm:p-6 bg-cream border border-line/60 rounded-3xl shadow-md transition-shadow',
+                highlightSearch && 'ring-2 ring-olive ring-offset-2 ring-offset-cream',
+              )}
+            >
+              <p className="text-[11px] font-semibold uppercase tracking-widest text-muted">
+                Find a drop-off
+              </p>
+              <button
+                type="button"
+                disabled={busy !== 'idle'}
+                onClick={handleUseLocation}
+                className="w-full inline-flex items-center justify-center gap-2 h-12 rounded-full bg-olive text-cream font-semibold hover:bg-olive-2 disabled:opacity-60 disabled:cursor-progress transition-colors"
+              >
+                {busy === 'geolocate' ? <Loader2 className="w-4 h-4 animate-spin" /> : <Locate className="w-4 h-4" />}
+                Use my location
+              </button>
+
+              <div className="flex items-center gap-2 text-xs text-muted">
+                <span className="flex-1 h-px bg-line/80" />
+                <span>or</span>
+                <span className="flex-1 h-px bg-line/80" />
+              </div>
+
+              <form onSubmit={handleSearch} className="relative">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted" />
+                <input
+                  type="text"
+                  value={query}
+                  onChange={e => setQuery(e.target.value)}
+                  placeholder={postcodeLabel(country)}
+                  className="w-full h-12 rounded-full border border-line/80 bg-cream pl-11 pr-28 text-sm placeholder:text-muted focus:outline-none focus:border-olive focus:ring-2 focus:ring-olive/20"
+                />
+                <button
+                  type="submit"
+                  disabled={busy !== 'idle' || !query.trim()}
+                  className="absolute right-1.5 top-1/2 -translate-y-1/2 h-9 px-4 rounded-full bg-ink text-cream text-xs font-semibold hover:bg-ink-2 disabled:opacity-50"
+                >
+                  {busy === 'geocode' ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Search'}
+                </button>
+              </form>
+
+              {error && <p className="text-sm text-rust">{error}</p>}
+
+              <p className="text-[11px] text-muted leading-relaxed italic">
+                Pouring oil down the drain causes{' '}
+                <a className="underline not-italic" href="https://en.wikipedia.org/wiki/Fatberg" target="_blank" rel="noreferrer">fatbergs</a>{' '}
+                {country === 'UK'
+                  ? 'and breaks section 111 of the Water Industry Act 1991.'
+                  : 'and is illegal under the Waste Management Act.'}
+              </p>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <p className="text-xs text-muted max-w-md text-center leading-relaxed">
-          Pouring oil down the drain causes <a className="underline" href="https://en.wikipedia.org/wiki/Fatberg" target="_blank" rel="noreferrer">fatbergs</a>{' '}
-          {country === 'UK'
-            ? 'and is an offence under section 111 of the Water Industry Act 1991.'
-            : 'and is illegal in Ireland under the Waste Management Act.'}
-        </p>
+      {/* Intent picker, now a quieter secondary band */}
+      <section className="w-full px-4 sm:px-8 lg:px-12 pb-14">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-baseline justify-between mb-4">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">
+              Or pick what fits you
+            </p>
+            <span className="hidden sm:block text-xs text-muted italic">three honest paths</span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <Link
+              to="/dispose"
+              className="group rounded-2xl border border-line/70 bg-cream p-4 flex flex-col gap-2 hover:border-olive/40 hover:bg-olive-soft/40 transition-colors"
+            >
+              <div className="flex items-center justify-between">
+                <span className="w-10 h-10 rounded-full bg-cream-2 grid place-items-center">
+                  <Droplet className="w-4 h-4 text-olive" fill="currentColor" />
+                </span>
+                <ChevronRight className="w-4 h-4 text-muted group-hover:text-olive-2 transition-colors" />
+              </div>
+              <p className="font-semibold text-sm text-ink mt-2">One jar from cooking</p>
+              <p className="text-xs text-muted leading-snug">Wipe and bin. Safe, allowed.</p>
+            </Link>
+
+            <button
+              type="button"
+              onClick={focusSearch}
+              className="group rounded-2xl border-2 border-olive/40 bg-olive-soft p-4 flex flex-col gap-2 text-left hover:bg-olive-soft/80 transition-colors"
+            >
+              <div className="flex items-center justify-between">
+                <span className="w-10 h-10 rounded-full bg-olive grid place-items-center">
+                  <GlassWater className="w-4 h-4 text-cream" />
+                </span>
+                <ChevronRight className="w-4 h-4 text-olive-2" />
+              </div>
+              <p className="font-semibold text-sm text-ink mt-2">Several bottles saved up</p>
+              <p className="text-xs text-ink-2 leading-snug">Use the search above.</p>
+            </button>
+
+            <Link
+              to="/pickup"
+              className="group rounded-2xl border border-line/70 bg-cream p-4 flex flex-col gap-2 hover:border-amber/40 hover:bg-amber-soft/40 transition-colors"
+            >
+              <div className="flex items-center justify-between">
+                <span className="w-10 h-10 rounded-full bg-amber-soft grid place-items-center">
+                  <Truck className="w-4 h-4 text-amber-2" />
+                </span>
+                <ChevronRight className="w-4 h-4 text-muted group-hover:text-amber-2 transition-colors" />
+              </div>
+              <p className="font-semibold text-sm text-ink mt-2">I'd prefer pickup</p>
+              <p className="text-xs text-muted leading-snug">Honest status in Ireland.</p>
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* Journey + biodiesel stats */}
@@ -223,7 +242,7 @@ export default function HomePage() {
             <p className="text-xs font-semibold uppercase tracking-widest text-olive-2 mb-2">
               How it should work
             </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ink leading-tight">
+            <h2 className="font-serif text-4xl sm:text-5xl font-semibold tracking-tight text-ink leading-[1.05]">
               From your pan to the road
             </h2>
             <p className="mt-3 text-base sm:text-lg text-ink-2 max-w-xl mx-auto">
@@ -270,8 +289,10 @@ export default function HomePage() {
             <p className="text-xs font-semibold uppercase tracking-widest text-amber-2 mb-2">
               {country === 'UK' ? 'The reality in the UK' : 'The reality in Ireland'}
             </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ink leading-tight max-w-2xl mx-auto">
-              {country === 'UK' ? "Better than Ireland, but the journey isn't joined up" : 'That journey mostly stops at the first step'}
+            <h2 className="font-serif text-4xl sm:text-5xl font-semibold tracking-tight text-ink leading-[1.05] max-w-2xl mx-auto">
+              {country === 'UK'
+                ? <>Better than Ireland, but <em className="not-italic text-rust">the journey isn't joined up</em></>
+                : <>That journey mostly stops <em className="not-italic text-rust">at the first step</em></>}
             </h2>
           </div>
           <div className="rounded-2xl bg-cream border border-line/60 p-6 sm:p-7 flex gap-4 items-start shadow-sm">
@@ -331,8 +352,8 @@ export default function HomePage() {
             <p className="text-xs font-semibold uppercase tracking-widest text-olive-2 mb-2">
               What good looks like
             </p>
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink leading-tight max-w-2xl mx-auto">
-              Three countries that built the infrastructure
+            <h3 className="font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-ink leading-[1.05] max-w-2xl mx-auto">
+              Three countries that <em className="not-italic text-olive">built the infrastructure</em>
             </h3>
             <p className="mt-3 text-base text-ink-2 max-w-xl mx-auto">
               Each one solved a different piece of the puzzle. Ireland can borrow from all of them.
@@ -383,7 +404,7 @@ export default function HomePage() {
             <p className="text-xs font-semibold uppercase tracking-widest text-olive-2 mb-2">
               {country === 'UK' ? 'Voices from UK kitchens' : 'Voices from Irish kitchens'}
             </p>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink leading-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-ink leading-[1.05]">
               {country === 'UK' ? 'Same gap, different country' : 'What people actually do today'}
             </h2>
             <p className="mt-3 text-base text-ink-2 max-w-xl mx-auto">
@@ -449,8 +470,10 @@ export default function HomePage() {
             <p className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber/20 text-amber-soft text-xs font-semibold uppercase tracking-widest mb-4">
               <Megaphone className="w-3.5 h-3.5" /> Push for change
             </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-cream leading-tight">
-              Ireland can copy what works.<br />Help us ask.
+            <h2 className="font-serif text-4xl sm:text-5xl font-semibold tracking-tight text-cream leading-[1.05]">
+              {country === 'UK' ? 'The UK can copy what works.' : 'Ireland can copy what works.'}
+              <br />
+              <em className="not-italic text-amber-soft">Help us ask.</em>
             </h2>
             <p className="mt-3 text-base sm:text-lg text-cream/85 leading-relaxed">
               Three concrete things one person can do today to move the needle. None of them

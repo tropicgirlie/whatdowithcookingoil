@@ -16,8 +16,8 @@ export default function AboutPage() {
           <span className="text-xs font-semibold tracking-widest uppercase text-olive-2">
             The honest explainer
           </span>
-          <h1 className="mt-3 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-ink">
-            Why is it so hard to recycle <span className="text-olive">cooking oil</span>?
+          <h1 className="mt-3 font-serif text-[2.8rem] sm:text-5xl lg:text-[3.6rem] font-semibold tracking-tight leading-[1.02] text-ink">
+            Why is it so hard to recycle <em className="not-italic text-olive" style={{ fontVariationSettings: '"opsz" 144, "SOFT" 100, "WONK" 1' }}>cooking&nbsp;oil</em>?
           </h1>
           <p className="mt-5 text-base sm:text-lg text-ink-2 leading-relaxed max-w-2xl mx-auto">
             There are two layers of "hard": the friction one citizen faces in their own kitchen,
@@ -34,7 +34,7 @@ export default function AboutPage() {
             <span className="text-xs font-semibold tracking-widest uppercase text-olive-2">
               Layer 1, from the kitchen
             </span>
-            <h2 className="mt-2 text-3xl sm:text-4xl font-bold tracking-tight text-ink leading-tight">
+            <h2 className="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-ink leading-[1.05]">
               The behaviour loop is five steps deep
             </h2>
             <p className="mt-3 text-base text-ink-2 leading-relaxed">
@@ -89,7 +89,7 @@ export default function AboutPage() {
             <span className="text-xs font-semibold tracking-widest uppercase text-rust">
               Layer 2, from above the kitchen
             </span>
-            <h2 className="mt-2 text-3xl sm:text-4xl font-bold tracking-tight text-ink leading-tight">
+            <h2 className="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-ink leading-[1.05]">
               No one with power has been motivated to fix it
             </h2>
             <p className="mt-3 text-base text-ink-2 leading-relaxed">
@@ -137,7 +137,7 @@ export default function AboutPage() {
                 <p className="text-xs font-semibold tracking-widest uppercase text-amber-soft mb-2">
                   The peer precedent
                 </p>
-                <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-cream leading-tight">
+                <h3 className="font-serif text-2xl sm:text-3xl font-semibold tracking-tight text-cream leading-[1.05]">
                   Spain just made household cooking oil collection mandatory.
                 </h3>
                 <p className="mt-2 text-sm sm:text-base text-cream/85 leading-relaxed">
@@ -158,7 +158,7 @@ export default function AboutPage() {
             <span className="text-xs font-semibold tracking-widest uppercase text-olive-2">
               What would actually move the needle
             </span>
-            <h2 className="mt-2 text-3xl sm:text-4xl font-bold tracking-tight text-ink leading-tight">
+            <h2 className="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-ink leading-[1.05]">
               Alternatives, sorted by leverage
             </h2>
             <p className="mt-3 text-base text-ink-2 leading-relaxed">
@@ -236,7 +236,7 @@ export default function AboutPage() {
             <span className="text-xs font-semibold tracking-widest uppercase text-olive-2">
               The chemistry
             </span>
-            <h2 className="mt-2 text-3xl sm:text-4xl font-bold tracking-tight text-ink leading-tight">
+            <h2 className="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-ink leading-[1.05]">
               How oil is actually recycled
             </h2>
             <p className="mt-3 text-base text-ink-2 leading-relaxed">
@@ -293,7 +293,7 @@ export default function AboutPage() {
             <span className="text-xs font-semibold tracking-widest uppercase text-olive-2">
               Where this site fits
             </span>
-            <h2 className="mt-2 text-3xl sm:text-4xl font-bold tracking-tight text-ink leading-tight">
+            <h2 className="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-ink leading-[1.05]">
               The easy half of the answer
             </h2>
             <p className="mt-3 text-base text-ink-2 max-w-xl mx-auto leading-relaxed">

@@ -6,7 +6,7 @@ export default function DisposePage() {
     <article className="max-w-2xl w-full mx-auto p-4 sm:p-6 prose-styles">
       <header className="mb-8">
         <p className="text-xs font-semibold uppercase tracking-widest text-olive-2">For Irish households</p>
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mt-2">
+        <h1 className="font-serif text-4xl sm:text-5xl font-semibold tracking-tight leading-[1.05] mt-2">
           What can I do with my used cooking oil?
         </h1>
         <p className="mt-3 text-ink-2 leading-relaxed">

@@ -13,7 +13,7 @@ export default function PickupPage() {
         <p className="text-xs font-semibold uppercase tracking-widest text-amber-2 flex items-center gap-1.5">
           <Truck className="w-3.5 h-3.5" /> Household pickup
         </p>
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mt-2">
+        <h1 className="font-serif text-4xl sm:text-5xl font-semibold tracking-tight leading-[1.05] mt-2">
           There's no household pickup in Ireland yet
         </h1>
         <p className="mt-3 text-ink-2 leading-relaxed">
