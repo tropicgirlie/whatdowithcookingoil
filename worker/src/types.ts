@@ -2,15 +2,24 @@
 
 export type PointKind = 'civic' | 'bring_bank' | 'commercial' | 'community'
 export type PointFee = 'free' | 'paid' | 'unknown'
-export type PointSource = 'mywaste' | 'osm' | 'council' | 'commercial' | 'user'
+export type PointSource = 'mywaste' | 'osm' | 'council' | 'commercial' | 'user' | 'recyclenow'
+export type PointConfidence =
+  | 'phone_verified'
+  | 'council_verified'
+  | 'community_submitted'
+  | 'unverified'
+
+export type Country = 'IE' | 'UK'
 
 export interface Point {
   id: string
   name: string
   kind: PointKind
+  country: Country
   address: string
   county: string
   eircode?: string
+  postcode?: string
   lat: number
   lng: number
   accepts_oil: boolean
@@ -26,6 +35,7 @@ export interface Point {
   source_url?: string
   last_verified_at?: string
   photo_url?: string
+  confidence: PointConfidence
 }
 
 export interface PendingSubmission {

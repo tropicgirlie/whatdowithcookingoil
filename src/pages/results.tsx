@@ -6,12 +6,16 @@ import { FilterChips, EMPTY_FILTERS, type Filters } from '@/components/filter-ch
 import { fetchPoints } from '@/lib/api'
 import { rankByDistance } from '@/lib/distance'
 import type { Point, PointWithDistance } from '@/lib/types'
+import { COUNTRY_CENTRE, COUNTRY_LABEL } from '@/lib/types'
+import { useCountry } from '@/lib/country-context'
 import { Loader2 } from 'lucide-react'
 
 export default function ResultsPage() {
   const [sp] = useSearchParams()
-  const lat = parseFloat(sp.get('lat') ?? '53.3498')
-  const lng = parseFloat(sp.get('lng') ?? '-6.2603')
+  const { country } = useCountry()
+  const centre = COUNTRY_CENTRE[country]
+  const lat = parseFloat(sp.get('lat') ?? String(centre.lat))
+  const lng = parseFloat(sp.get('lng') ?? String(centre.lng))
 
   const [all, setAll] = useState<Point[] | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -26,9 +30,11 @@ export default function ResultsPage() {
     return () => { alive = false }
   }, [])
 
+  const countryFiltered = useMemo(() => all?.filter(p => p.country === country) ?? null, [all, country])
+
   const visible: PointWithDistance[] = useMemo(() => {
-    if (!all) return []
-    const ranked = rankByDistance(all, lat, lng, { radiusMeters: 25_000, minResults: 5 })
+    if (!countryFiltered) return []
+    const ranked = rankByDistance(countryFiltered, lat, lng, { radiusMeters: 25_000, minResults: 5 })
     const matches = (p: PointWithDistance) => {
       if (filters.freeOnly && p.fee !== 'free') return false
       if (filters.householdOnly && !p.accepts_household_quantity) return false
@@ -39,29 +45,29 @@ export default function ResultsPage() {
     if (strict.length >= 3) return strict
     // Soft-match fallback per memory: never empty when data exists.
     return ranked.slice(0, 5)
-  }, [all, lat, lng, filters])
+  }, [countryFiltered, lat, lng, filters])
 
   const usingFallback = useMemo(() => {
-    if (!all) return false
-    const strict = rankByDistance(all, lat, lng).filter(p => {
+    if (!countryFiltered) return false
+    const strict = rankByDistance(countryFiltered, lat, lng).filter(p => {
       if (filters.freeOnly && p.fee !== 'free') return false
       if (filters.householdOnly && !p.accepts_household_quantity) return false
       if (filters.kinds.size && !filters.kinds.has(p.kind)) return false
       return true
     })
     return (filters.freeOnly || filters.householdOnly || filters.kinds.size > 0) && strict.length < 3
-  }, [all, lat, lng, filters])
+  }, [countryFiltered, lat, lng, filters])
 
   return (
     <div className="flex-1 grid lg:grid-cols-[minmax(0,420px)_1fr] gap-4 p-4 max-w-7xl w-full mx-auto">
       <section className="flex flex-col gap-3 min-h-0">
         <header>
-          <h2 className="text-lg font-semibold">Near you</h2>
+          <h2 className="text-lg font-semibold">Near you in {COUNTRY_LABEL[country]}</h2>
           <p className="text-xs text-muted">
             {visible.length
               ? `${visible.length} drop-off ${visible.length === 1 ? 'point' : 'points'}`
-              : all
-                ? 'No data in this area yet — help us by suggesting one.'
+              : countryFiltered
+                ? `No data yet in ${COUNTRY_LABEL[country]} near here. Help us by suggesting one.`
                 : 'Loading…'}
           </p>
         </header>
@@ -70,7 +76,7 @@ export default function ResultsPage() {
 
         {usingFallback && (
           <p className="text-xs text-amber-2 bg-amber-soft border border-amber/40 rounded-card px-3 py-2">
-            Showing nearest points — not all match every filter you picked.
+            Showing nearest points. Not all match every filter you picked.
           </p>
         )}
 

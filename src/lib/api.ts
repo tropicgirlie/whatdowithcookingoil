@@ -1,33 +1,21 @@
 import type { Point } from './types'
+import seedPoints from '@/../data/points.v1.json'
 
-const API_BASE = import.meta.env.VITE_API_BASE ?? ''
+/**
+ * Read-only data layer for the static build.
+ *
+ * For v0.1 OilCycle ships as a pure static site: points come from the bundled
+ * data/points.v1.json. No backend. When/if a Worker is added later, swap these
+ * implementations to fetch from `/api/points` first and fall back to the seed.
+ *
+ * Submissions go through a mailto on /suggest, so there's no submit endpoint
+ * to wire up yet.
+ */
 
-/** Fetch the full points dataset. Cheap — single KV blob, edge-cached. */
 export async function fetchPoints(): Promise<Point[]> {
-  const res = await fetch(`${API_BASE}/api/points`)
-  if (!res.ok) throw new Error(`Failed to load points: ${res.status}`)
-  return res.json()
+  return seedPoints as Point[]
 }
 
 export async function fetchPoint(id: string): Promise<Point | null> {
-  const res = await fetch(`${API_BASE}/api/points/${encodeURIComponent(id)}`)
-  if (res.status === 404) return null
-  if (!res.ok) throw new Error(`Failed to load point: ${res.status}`)
-  return res.json()
-}
-
-export async function submitSuggestion(payload: {
-  name: string
-  address: string
-  county?: string
-  notes?: string
-  submitter_email?: string
-}): Promise<{ ok: true; id: string }> {
-  const res = await fetch(`${API_BASE}/api/suggest`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  })
-  if (!res.ok) throw new Error(`Submission failed: ${res.status}`)
-  return res.json()
+  return (seedPoints as Point[]).find(p => p.id === id) ?? null
 }

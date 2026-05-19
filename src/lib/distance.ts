@@ -22,9 +22,9 @@ export function haversine(
 
 /**
  * Sort points by distance from the reference location and (optionally) cap by
- * radius. Always returns the closest N anyway when nothing is within radius —
- * never produce an empty list when there's data in the dataset (filter-empty-
- * state policy).
+ * radius. Always returns the closest N anyway when nothing is within radius,
+ * so it never produces an empty list when there's data in the dataset
+ * (filter-empty-state policy).
  */
 export function rankByDistance(
   points: Point[],

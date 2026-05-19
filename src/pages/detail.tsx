@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { fetchPoint } from '@/lib/api'
 import type { Point } from '@/lib/types'
-import { KIND_LABEL } from '@/lib/types'
+import { KIND_LABEL, CONFIDENCE_DESCRIPTION } from '@/lib/types'
 import { ArrowLeft, ExternalLink, Phone, Globe, Loader2, Navigation } from 'lucide-react'
+import { ConfidenceBadge } from '@/components/confidence-badge'
 
 export default function DetailPage() {
   const { id } = useParams<{ id: string }>()
@@ -44,6 +45,10 @@ export default function DetailPage() {
         <p className="text-xs font-medium uppercase tracking-wider text-olive-2">{KIND_LABEL[point.kind]}</p>
         <h1 className="text-2xl sm:text-3xl font-bold tracking-tight mt-1">{point.name}</h1>
         <p className="text-ink-2 mt-2">{point.address}</p>
+        <div className="mt-3 flex flex-col gap-1.5">
+          <ConfidenceBadge confidence={point.confidence} size="md" />
+          <p className="text-xs text-muted">{CONFIDENCE_DESCRIPTION[point.confidence]}</p>
+        </div>
       </header>
 
       <a
@@ -83,7 +88,7 @@ export default function DetailPage() {
 
       {point.hours && 'by_appointment' in point.hours && (
         <p className="text-sm bg-cream-2/60 border border-line/60 rounded-card px-3 py-2">
-          By appointment only — call ahead.
+          By appointment only. Call ahead.
         </p>
       )}
 
@@ -93,6 +98,15 @@ export default function DetailPage() {
           <p className="text-sm text-ink-2">{point.notes}</p>
         </section>
       )}
+
+      <section className="rounded-card bg-cream-2/60 border border-line/60 p-4">
+        <p className="text-sm font-semibold text-ink">Before you go</p>
+        <p className="mt-1 text-sm text-ink-2 leading-relaxed">
+          Let oil cool fully. Decant into a sealed plastic bottle. Don't mix with water,
+          food scraps or other chemicals. If this listing isn't council-verified, ring ahead
+          before driving over.
+        </p>
+      </section>
 
       <section className="flex flex-wrap gap-2 text-sm">
         {point.phone && (

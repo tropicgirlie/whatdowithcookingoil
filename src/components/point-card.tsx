@@ -3,7 +3,8 @@ import type { PointWithDistance } from '@/lib/types'
 import { KIND_LABEL } from '@/lib/types'
 import { formatDistance } from '@/lib/distance'
 import { cn } from '@/lib/utils'
-import { MapPin, Euro, Sparkles } from 'lucide-react'
+import { MapPin, Euro } from 'lucide-react'
+import { ConfidenceBadge } from './confidence-badge'
 
 interface Props {
   point: PointWithDistance
@@ -38,21 +39,17 @@ export function PointCard({ point, active, onHover }: Props) {
       </p>
 
       <div className="flex flex-wrap gap-1.5 mt-3">
+        <ConfidenceBadge confidence={point.confidence} />
         {point.fee === 'free' && (
-          <span className="text-[11px] font-medium px-2 py-0.5 rounded-pill bg-olive-soft text-olive-2">Free</span>
+          <span className="text-[11px] font-medium px-2 py-0.5 rounded-pill bg-cream-2 text-ink-2">Free</span>
         )}
         {point.fee === 'paid' && (
-          <span className="text-[11px] font-medium px-2 py-0.5 rounded-pill bg-amber-soft text-amber-2 flex items-center gap-1">
+          <span className="text-[11px] font-medium px-2 py-0.5 rounded-pill bg-cream-2 text-ink-2 flex items-center gap-1">
             <Euro className="w-3 h-3" /> Paid
           </span>
         )}
         {point.accepts_household_quantity && (
           <span className="text-[11px] font-medium px-2 py-0.5 rounded-pill bg-cream-2 text-ink-2">Household OK</span>
-        )}
-        {point.last_verified_at && (
-          <span className="text-[11px] font-medium px-2 py-0.5 rounded-pill bg-cream-2 text-muted flex items-center gap-1">
-            <Sparkles className="w-3 h-3" /> Verified
-          </span>
         )}
       </div>
     </Link>

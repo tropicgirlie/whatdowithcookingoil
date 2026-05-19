@@ -11,7 +11,9 @@
     "lint": "tsc --noEmit",
     "worker:dev": "cd worker && wrangler dev",
     "worker:deploy": "cd worker && wrangler deploy",
-    "data:upload": "tsx scripts/upload_dataset.ts"
+    "worker:secret": "cd worker && wrangler secret put",
+    "data:upload": "tsx scripts/upload_dataset.ts",
+    "data:seed:osm": "tsx scripts/seed_osm_ie.ts"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.6",

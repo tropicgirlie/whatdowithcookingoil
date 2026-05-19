@@ -112,6 +112,8 @@ app.post('/api/admin/pending/:id/approve', async (c) => {
     notes: sub.payload.notes,
     source: 'user',
     last_verified_at: new Date().toISOString(),
+    country: extra.country ?? 'IE',
+    confidence: extra.confidence ?? 'community_submitted',
     ...extra,
   }
 

@@ -4,6 +4,9 @@ import ResultsPage from './pages/results'
 import DetailPage from './pages/detail'
 import SuggestPage from './pages/suggest'
 import AboutPage from './pages/about'
+import DisposePage from './pages/dispose'
+import PickupPage from './pages/pickup'
+import { CountrySwitcher } from './components/country-switcher'
 import { Droplet } from 'lucide-react'
 
 export default function App() {
@@ -21,8 +24,12 @@ export default function App() {
             <span>OilCycle</span>
           </Link>
           <nav className="flex items-center gap-1 text-sm">
-            <Link to="/about" className="px-3 py-1.5 rounded-full hover:bg-cream-2 text-ink-2">Why recycle</Link>
-            <Link to="/suggest" className="px-3 py-1.5 rounded-full hover:bg-cream-2 text-ink-2">Suggest a place</Link>
+            <Link to="/dispose" className="hidden sm:inline-block px-3 py-1.5 rounded-full hover:bg-cream-2 text-ink-2">What can I do?</Link>
+            <Link to="/about" className="hidden sm:inline-block px-3 py-1.5 rounded-full hover:bg-cream-2 text-ink-2">Why it's hard</Link>
+            <Link to="/suggest" className="hidden sm:inline-block px-3 py-1.5 rounded-full hover:bg-cream-2 text-ink-2">Suggest a place</Link>
+            <span className="ml-2">
+              <CountrySwitcher />
+            </span>
           </nav>
         </div>
       </header>
@@ -34,6 +41,8 @@ export default function App() {
           <Route path="/places/:id" element={<DetailPage />} />
           <Route path="/suggest" element={<SuggestPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/dispose" element={<DisposePage />} />
+          <Route path="/pickup" element={<PickupPage />} />
         </Routes>
       </main>
 
