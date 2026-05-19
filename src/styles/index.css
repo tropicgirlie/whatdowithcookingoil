@@ -1,33 +1,33 @@
 @import "tailwindcss";
 @import "maplibre-gl/dist/maplibre-gl.css";
 
-/* ── OilCycle theme ──────────────────────────────────────────────────────────
-   Earthy-but-modern palette. Olive green (recycle) + cream (paper) + amber
-   (the colour of clean oil) + ink. Tuned for warmth and trust. */
+/* ── OilCycle palette ────────────────────────────────────────────────────────
+   Desaturated, editorial. Sage forest for the brand, mustard amber for the
+   oil accent, warm paper for the surface, deep ink for type. No gradients. */
 
 @theme {
-  --color-cream: #f6f5f0;
-  --color-cream-2: #ecebe2;
-  --color-ink: #1c1d1a;
-  --color-ink-2: #3a3b36;
-  --color-muted: #6b6b63;
-  --color-line: #d9d8cc;
+  --color-cream: #f5f2eb;
+  --color-cream-2: #ecead9;
+  --color-ink: #1a1c19;
+  --color-ink-2: #3a3d35;
+  --color-muted: #6a6f5f;
+  --color-line: #d6d3c4;
 
-  --color-olive: #1f6b3a;
-  --color-olive-2: #19562f;
-  --color-olive-soft: #e3efe6;
+  --color-olive: #3d5b46;
+  --color-olive-2: #2c4434;
+  --color-olive-soft: #e6ebde;
 
-  --color-amber: #f0c419;
-  --color-amber-2: #d9a90b;
-  --color-amber-soft: #fbf3d6;
+  --color-amber: #d9a82c;
+  --color-amber-2: #b08821;
+  --color-amber-soft: #f4eccb;
 
-  --color-rust: #c45a26;
+  --color-rust: #a8553a;
 
   --font-sans: "InterVariable", ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-serif: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
 
-  --radius-card: 14px;
+  --radius-card: 12px;
   --radius-pill: 9999px;
 }
 
@@ -49,8 +49,15 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Editorial rule between sections, used in place of boxed cards. */
+.rule {
+  height: 1px;
+  background: var(--color-line);
+  width: 100%;
+}
+
 /* MapLibre attribution restyle to fit the theme */
 .maplibregl-ctrl-attrib {
   font-size: 10px;
-  background: rgba(246, 245, 240, 0.85) !important;
+  background: rgba(245, 242, 235, 0.85) !important;
 }

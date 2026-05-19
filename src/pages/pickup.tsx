@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Truck, Phone, Mail, ChevronRight } from 'lucide-react'
+import { Truck, Phone, Mail, ChevronRight, Globe } from 'lucide-react'
 
 export default function PickupPage() {
   const subject = encodeURIComponent('OilCycle pickup waitlist')
@@ -8,94 +8,193 @@ export default function PickupPage() {
   )
 
   return (
-    <article className="max-w-2xl w-full mx-auto p-4 sm:p-6">
-      <header className="mb-6">
-        <p className="text-xs font-semibold uppercase tracking-widest text-amber-2 flex items-center gap-1.5">
-          <Truck className="w-3.5 h-3.5" /> Household pickup
-        </p>
-        <h1 className="font-serif text-4xl sm:text-5xl font-semibold tracking-tight leading-[1.05] mt-2">
-          There's no household pickup in Ireland yet
-        </h1>
-        <p className="mt-3 text-ink-2 leading-relaxed">
-          Every commercial collector in the country (Frylite, Olleco, Bolton Biofuels,
-          Nature's Oils, Pure Oil) serves restaurants and food businesses only. None of them
-          have a household-pickup offering, and there's no online booking anywhere.
-        </p>
-      </header>
+    <article className="flex-1 flex flex-col">
+      {/* Hero */}
+      <section className="w-full px-4 sm:px-8 lg:px-12 pt-12 sm:pt-16 lg:pt-20 pb-12">
+        <div className="max-w-5xl mx-auto">
+          <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-amber-2 flex items-center gap-2 mb-4">
+            <Truck className="w-3.5 h-3.5" /> Household pickup
+          </p>
+          <h1 className="font-serif text-[2.4rem] sm:text-5xl lg:text-[3.4rem] font-semibold tracking-tight leading-[1.02] text-ink max-w-3xl">
+            There's no household pickup{' '}
+            <em
+              className="not-italic text-rust"
+              style={{ fontVariationSettings: '"opsz" 144, "SOFT" 100, "WONK" 1' }}
+            >
+              in Ireland yet
+            </em>
+            .
+          </h1>
+          <p className="mt-6 text-base sm:text-lg text-ink-2 leading-relaxed max-w-2xl">
+            Every commercial collector in the country (Frylite, Olleco, Bolton Biofuels,
+            Nature's Oils, Pure Oil) serves restaurants and food businesses only. None
+            offer household pickup, and there's no online booking anywhere.
+          </p>
+        </div>
+      </section>
 
-      <section className="rounded-card border border-line/70 bg-cream-2/40 p-5">
-        <h2 className="text-base font-semibold tracking-tight">What you can do now</h2>
-        <ol className="mt-3 flex flex-col gap-3 text-ink-2 list-decimal pl-5 leading-relaxed">
-          <li>
-            Store cooled oil in a sealed plastic bottle and drop it at a civic amenity site
-            that accepts cooking oil.{' '}
-            <Link to="/" className="font-semibold text-olive hover:text-olive-2 inline-flex items-center gap-0.5">
-              Find one near you <ChevronRight className="w-3.5 h-3.5" />
+      <Divider />
+
+      {/* What you can do now */}
+      <Block kicker="What you can do now">
+        <SectionHeading>Three honest paths</SectionHeading>
+        <ol className="mt-8 flex flex-col gap-6 max-w-2xl">
+          <Step n={1}>
+            Store cooled oil in a sealed plastic bottle and drop it at a civic amenity
+            site that accepts cooking oil.{' '}
+            <Link to="/" className="underline font-semibold text-olive hover:text-olive-2">
+              Find one near you.
             </Link>
-          </li>
-          <li>
-            If you only have a small residue (under 200 ml), wipe with kitchen paper and put
-            the paper in your brown food-waste bin.{' '}
-            <Link to="/dispose" className="font-semibold text-olive hover:text-olive-2 inline-flex items-center gap-0.5">
-              How to dispose at home <ChevronRight className="w-3.5 h-3.5" />
+          </Step>
+          <Step n={2}>
+            If you only have a small residue (under 200 ml), wipe with kitchen paper and
+            put the paper in your brown food-waste bin.{' '}
+            <Link to="/dispose" className="underline font-semibold text-olive hover:text-olive-2">
+              How to dispose at home.
             </Link>
-          </li>
-          <li>
-            If you have a community kitchen, restaurant, takeaway, or food business near you,
-            ask them which collector they use. Some are willing to take a household bottle as
-            a favour when the lorry calls.
-          </li>
+          </Step>
+          <Step n={3}>
+            If you have a community kitchen, restaurant, takeaway or food business near
+            you, ask which collector they use. Some are willing to take a household
+            bottle as a favour when the lorry calls.
+          </Step>
         </ol>
+      </Block>
+
+      <Divider />
+
+      {/* Want it to exist */}
+      <section className="w-full px-4 sm:px-8 lg:px-12 py-16 sm:py-20">
+        <div className="max-w-5xl mx-auto">
+          <div className="rounded-2xl bg-olive text-cream p-7 sm:p-10 max-w-3xl">
+            <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-amber-soft mb-3">
+              Want this to exist
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl font-semibold tracking-tight leading-[1.05]">
+              Join the waitlist
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-cream/85 leading-relaxed">
+              We're tracking demand so we can approach councils and collectors with real
+              numbers. Send a quick email with your county and how much oil you'd want
+              collected. No account, no newsletter, no spam, just a counter.
+            </p>
+            <a
+              href={`mailto:contact@oilcycle.ie?subject=${subject}&body=${body}`}
+              className="mt-6 inline-flex items-center gap-2 h-12 px-6 rounded-full bg-cream text-ink font-semibold hover:bg-amber-soft transition-colors"
+            >
+              <Mail className="w-4 h-4" /> Email the waitlist
+            </a>
+          </div>
+        </div>
       </section>
 
-      <section className="mt-6 rounded-card border border-amber/30 bg-amber-soft p-5">
-        <h2 className="text-base font-semibold tracking-tight text-ink">
-          Want a household pickup to exist?
-        </h2>
-        <p className="mt-2 text-sm text-ink-2 leading-relaxed">
-          We're tracking demand so we can approach councils and collectors with real numbers.
-          Send a quick email with your county and how much oil you'd want collected. No
-          account, no newsletter, no spam, just a counter.
-        </p>
-        <a
-          href={`mailto:contact@oilcycle.ie?subject=${subject}&body=${body}`}
-          className="mt-4 inline-flex items-center gap-2 h-11 px-5 rounded-pill bg-ink text-cream font-semibold hover:bg-ink-2 transition-colors"
-        >
-          <Mail className="w-4 h-4" /> Email the waitlist
-        </a>
-      </section>
+      <Divider />
 
-      <section className="mt-8 text-sm text-ink-2 leading-relaxed">
-        <h2 className="text-base font-semibold tracking-tight text-ink">
-          What if I have a huge amount? (10+ litres)
-        </h2>
-        <p className="mt-2">
-          If you've inherited oil from a closed restaurant, a school canteen, or a one-off
-          event, ring a commercial collector directly. They sometimes do one-off pickups for
-          a fee, even outside their normal route.
+      {/* Huge amount */}
+      <Block kicker="Bigger volumes">
+        <SectionHeading>
+          What if I have <em className="not-italic text-olive">10 + litres</em>?
+        </SectionHeading>
+        <p className="mt-4 text-base sm:text-lg text-ink-2 leading-relaxed max-w-2xl">
+          If you've inherited oil from a closed restaurant, a school canteen or a one-off
+          event, ring a commercial collector directly. They sometimes do one-off
+          pickups for a fee, even outside their normal route.
         </p>
-        <ul className="mt-3 flex flex-col gap-2">
-          <li className="flex items-center gap-2">
-            <Phone className="w-3.5 h-3.5 text-muted" />
-            <a className="underline" href="tel:+35371916 1888">Frylite</a>
-            <span className="text-muted">+353 71 916 1888</span>
-          </li>
-          <li className="flex items-center gap-2">
-            <Phone className="w-3.5 h-3.5 text-muted" />
-            <span>Bolton Biofuels</span>
-            <a className="underline" href="https://boltonbiofuels.com/uco-collections-ire/" target="_blank" rel="noreferrer">boltonbiofuels.com</a>
-          </li>
-          <li className="flex items-center gap-2">
-            <Phone className="w-3.5 h-3.5 text-muted" />
-            <span>Nature's Oils</span>
-            <a className="underline" href="https://www.naturesoils.ie/used-cooking-oil-collection/" target="_blank" rel="noreferrer">naturesoils.ie</a>
-          </li>
+
+        <ul className="mt-8 flex flex-col gap-5 max-w-2xl">
+          <Collector
+            name="Frylite"
+            phone="+353 71 916 1888"
+            phoneHref="tel:+35371916 1888"
+          />
+          <Collector
+            name="Bolton Biofuels"
+            site="boltonbiofuels.com"
+            siteHref="https://boltonbiofuels.com/uco-collections-ire/"
+          />
+          <Collector
+            name="Nature's Oils"
+            site="naturesoils.ie"
+            siteHref="https://www.naturesoils.ie/used-cooking-oil-collection/"
+          />
         </ul>
-        <p className="mt-3 text-xs text-muted">
-          Expect them to say "we don't do residential" first. Mention the volume and ask if
-          you can drop at their depot.
+
+        <p className="mt-6 text-sm text-muted italic max-w-2xl leading-relaxed">
+          Expect them to say "we don't do residential" first. Mention the volume and ask
+          if you can drop at their depot.
         </p>
-      </section>
+      </Block>
     </article>
+  )
+}
+
+function Divider() {
+  return (
+    <div className="px-4 sm:px-8 lg:px-12">
+      <div className="max-w-5xl mx-auto"><div className="rule" /></div>
+    </div>
+  )
+}
+
+function Block({ kicker, children }: { kicker: string; children: React.ReactNode }) {
+  return (
+    <section className="w-full px-4 sm:px-8 lg:px-12 py-16 sm:py-24">
+      <div className="max-w-5xl mx-auto">
+        <p className="text-[11px] font-semibold tracking-[0.18em] uppercase mb-3 text-olive-2">
+          {kicker}
+        </p>
+        {children}
+      </div>
+    </section>
+  )
+}
+
+function SectionHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <h2 className="font-serif text-4xl sm:text-5xl font-semibold tracking-tight text-ink leading-[1.05] max-w-3xl">
+      {children}
+    </h2>
+  )
+}
+
+function Step({ n, children }: { n: number; children: React.ReactNode }) {
+  return (
+    <li className="flex gap-5">
+      <span className="font-serif text-5xl sm:text-6xl font-semibold leading-none flex-none w-12 text-olive">
+        {n}
+      </span>
+      <p className="text-base sm:text-lg text-ink-2 leading-relaxed pt-1">{children}</p>
+    </li>
+  )
+}
+
+function Collector({
+  name,
+  phone,
+  phoneHref,
+  site,
+  siteHref,
+}: {
+  name: string
+  phone?: string
+  phoneHref?: string
+  site?: string
+  siteHref?: string
+}) {
+  return (
+    <li className="flex flex-wrap items-center gap-x-4 gap-y-1 py-3 border-t border-line/60 last:border-b">
+      <span className="font-serif text-lg font-semibold text-ink min-w-[150px]">{name}</span>
+      {phone && phoneHref && (
+        <a href={phoneHref} className="inline-flex items-center gap-1.5 text-sm text-ink-2 hover:text-olive-2 transition-colors">
+          <Phone className="w-3.5 h-3.5 text-muted" /> {phone}
+        </a>
+      )}
+      {site && siteHref && (
+        <a href={siteHref} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-sm text-ink-2 underline hover:text-olive-2 transition-colors">
+          <Globe className="w-3.5 h-3.5 text-muted" /> {site}
+        </a>
+      )}
+      <ChevronRight className="w-4 h-4 text-muted ml-auto" />
+    </li>
   )
 }

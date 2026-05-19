@@ -124,7 +124,7 @@ export default function HomePage() {
 
             <div
               className={cn(
-                'flex flex-col gap-3 p-5 sm:p-6 bg-cream border border-line/60 rounded-3xl shadow-md transition-shadow',
+                'flex flex-col gap-3 p-5 sm:p-6 bg-cream border border-line/60 rounded-2xl transition-shadow',
                 highlightSearch && 'ring-2 ring-olive ring-offset-2 ring-offset-cream',
               )}
             >
@@ -236,22 +236,23 @@ export default function HomePage() {
       </section>
 
       {/* Journey + biodiesel stats */}
-      <section className="w-full px-4 py-14 sm:py-20 bg-cream-2/60 border-y border-line/40">
+      <div className="px-4 sm:px-8 lg:px-12"><div className="max-w-5xl mx-auto"><div className="rule" /></div></div>
+      <section className="w-full px-4 sm:px-8 lg:px-12 py-16 sm:py-24">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-8">
-            <p className="text-xs font-semibold uppercase tracking-widest text-olive-2 mb-2">
+          <div className="mb-10">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-olive-2 mb-3">
               How it should work
             </p>
             <h2 className="font-serif text-4xl sm:text-5xl font-semibold tracking-tight text-ink leading-[1.05]">
               From your pan to the road
             </h2>
-            <p className="mt-3 text-base sm:text-lg text-ink-2 max-w-xl mx-auto">
+            <p className="mt-3 text-base sm:text-lg text-ink-2 max-w-xl leading-relaxed">
               In countries with proper infrastructure, a litre of cooking oil dropped at
               a centre comes back as biodiesel powering buses and lorries.
             </p>
           </div>
           <RecycleJourney />
-          <p className="mt-6 text-[11px] text-muted text-center max-w-lg mx-auto leading-relaxed">
+          <p className="mt-6 text-[11px] text-muted max-w-lg leading-relaxed italic">
             Estimates based on 90% UCO-to-biodiesel conversion (transesterification yield),
             average bus fuel economy of 3 km/L (B100), and 2.5 kg CO₂e displaced per litre
             of fossil diesel substituted.
@@ -260,8 +261,9 @@ export default function HomePage() {
       </section>
 
       {/* Numbers band */}
-      <section className="w-full px-4 py-12 sm:py-14 bg-cream border-b border-line/40">
-        <div className="max-w-4xl mx-auto flex flex-wrap items-start justify-around gap-8 sm:gap-10">
+      <div className="px-4 sm:px-8 lg:px-12"><div className="max-w-5xl mx-auto"><div className="rule" /></div></div>
+      <section className="w-full px-4 sm:px-8 lg:px-12 py-14 sm:py-16">
+        <div className="max-w-5xl mx-auto flex flex-wrap items-start justify-around gap-8 sm:gap-10">
           {country === 'UK' ? (
             <>
               <Stat value="~350" caption="HWRCs run by UK councils" tone="olive" />
@@ -282,24 +284,25 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Reality check, soft amber */}
-      <section className="w-full px-4 py-14 sm:py-20 bg-amber-soft/40 border-b border-amber/20">
+      {/* Reality check */}
+      <div className="px-4 sm:px-8 lg:px-12"><div className="max-w-5xl mx-auto"><div className="rule" /></div></div>
+      <section className="w-full px-4 sm:px-8 lg:px-12 py-16 sm:py-24">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-8">
-            <p className="text-xs font-semibold uppercase tracking-widest text-amber-2 mb-2">
+          <div className="mb-8">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-rust mb-3">
               {country === 'UK' ? 'The reality in the UK' : 'The reality in Ireland'}
             </p>
-            <h2 className="font-serif text-4xl sm:text-5xl font-semibold tracking-tight text-ink leading-[1.05] max-w-2xl mx-auto">
+            <h2 className="font-serif text-4xl sm:text-5xl font-semibold tracking-tight text-ink leading-[1.05] max-w-2xl">
               {country === 'UK'
                 ? <>Better than Ireland, but <em className="not-italic text-rust">the journey isn't joined up</em></>
                 : <>That journey mostly stops <em className="not-italic text-rust">at the first step</em></>}
             </h2>
           </div>
-          <div className="rounded-2xl bg-cream border border-line/60 p-6 sm:p-7 flex gap-4 items-start shadow-sm">
-            <div className="w-10 h-10 rounded-full bg-amber-soft grid place-items-center flex-none">
+          <div className="flex gap-5 items-start">
+            <div className="w-10 h-10 rounded-full bg-amber-soft grid place-items-center flex-none mt-1">
               <AlertCircle className="w-5 h-5 text-rust" />
             </div>
-            <div className="flex flex-col gap-3 text-sm sm:text-base text-ink-2 leading-relaxed">
+            <div className="flex flex-col gap-3 text-base sm:text-lg text-ink-2 leading-relaxed">
               {country === 'UK' ? (
                 <>
                   <p>
@@ -346,16 +349,17 @@ export default function HomePage() {
       </section>
 
       {/* Country cards */}
-      <section className="w-full px-4 py-14 sm:py-20">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10">
-            <p className="text-xs font-semibold uppercase tracking-widest text-olive-2 mb-2">
+      <div className="px-4 sm:px-8 lg:px-12"><div className="max-w-5xl mx-auto"><div className="rule" /></div></div>
+      <section className="w-full px-4 sm:px-8 lg:px-12 py-16 sm:py-24">
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-10">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-olive-2 mb-3">
               What good looks like
             </p>
-            <h3 className="font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-ink leading-[1.05] max-w-2xl mx-auto">
+            <h3 className="font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-ink leading-[1.05] max-w-2xl">
               Three countries that <em className="not-italic text-olive">built the infrastructure</em>
             </h3>
-            <p className="mt-3 text-base text-ink-2 max-w-xl mx-auto">
+            <p className="mt-3 text-base text-ink-2 max-w-xl leading-relaxed">
               Each one solved a different piece of the puzzle. Ireland can borrow from all of them.
             </p>
           </div>
@@ -398,16 +402,17 @@ export default function HomePage() {
       </section>
 
       {/* Voices from kitchens (country-aware) */}
-      <section className="w-full px-4 py-14 sm:py-20 bg-cream-2/60 border-y border-line/40">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10">
-            <p className="text-xs font-semibold uppercase tracking-widest text-olive-2 mb-2">
+      <div className="px-4 sm:px-8 lg:px-12"><div className="max-w-5xl mx-auto"><div className="rule" /></div></div>
+      <section className="w-full px-4 sm:px-8 lg:px-12 py-16 sm:py-24">
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-10">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-olive-2 mb-3">
               {country === 'UK' ? 'Voices from UK kitchens' : 'Voices from Irish kitchens'}
             </p>
             <h2 className="font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-ink leading-[1.05]">
               {country === 'UK' ? 'Same gap, different country' : 'What people actually do today'}
             </h2>
-            <p className="mt-3 text-base text-ink-2 max-w-xl mx-auto">
+            <p className="mt-3 text-base text-ink-2 max-w-xl leading-relaxed">
               When the infrastructure is patchy, this is what families resort to. None of it is their fault.
             </p>
           </div>
@@ -463,11 +468,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA panel */}
-      <section className="w-full px-4 py-14 sm:py-20">
-        <div className="max-w-5xl mx-auto rounded-3xl bg-olive p-7 sm:p-10 shadow-xl">
+      {/* CTA panel, the deliberate accent block */}
+      <section className="w-full px-4 sm:px-8 lg:px-12 pt-8 pb-16 sm:pb-24">
+        <div className="max-w-5xl mx-auto rounded-2xl bg-olive p-8 sm:p-12">
           <div className="text-center mb-8 max-w-2xl mx-auto">
-            <p className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber/20 text-amber-soft text-xs font-semibold uppercase tracking-widest mb-4">
+            <p className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber/20 text-amber-soft text-[11px] font-semibold uppercase tracking-[0.18em] mb-4">
               <Megaphone className="w-3.5 h-3.5" /> Push for change
             </p>
             <h2 className="font-serif text-4xl sm:text-5xl font-semibold tracking-tight text-cream leading-[1.05]">
@@ -533,18 +538,18 @@ interface CountryCardProps {
 
 function CountryCard({ flag, country, stat, statLabel, points }: CountryCardProps) {
   return (
-    <article className="rounded-3xl border border-line/60 bg-cream p-5 sm:p-6 flex flex-col gap-4 shadow-sm">
+    <article className="pl-5 border-l border-olive-soft flex flex-col gap-4">
       <header className="flex items-start justify-between gap-2">
         <div>
           <p className="text-2xl" aria-hidden="true">{flag}</p>
-          <h4 className="text-lg font-bold text-ink mt-2 tracking-tight">{country}</h4>
+          <h4 className="font-serif text-2xl font-semibold text-ink mt-2 tracking-tight leading-none">{country}</h4>
         </div>
         <div className="text-right">
-          <p className="font-bold text-olive-2 text-base leading-none">{stat}</p>
-          <p className="text-[10px] uppercase tracking-wider text-muted mt-1">{statLabel}</p>
+          <p className="font-serif text-lg font-semibold text-olive-2 leading-none">{stat}</p>
+          <p className="text-[10px] uppercase tracking-[0.18em] text-muted mt-1">{statLabel}</p>
         </div>
       </header>
-      <ul className="flex flex-col gap-2 text-[13px] text-ink-2 leading-snug">
+      <ul className="flex flex-col gap-2 text-[13px] sm:text-sm text-ink-2 leading-relaxed">
         {points.map(p => (
           <li key={p} className="flex gap-2">
             <span className="text-olive-2 flex-none">›</span>
@@ -558,24 +563,22 @@ function CountryCard({ flag, country, stat, statLabel, points }: CountryCardProp
 
 interface VoiceCardProps {
   quote: string
-  initials: string
+  /** Kept for backwards compat after the chrome was stripped. Unused. */
+  initials?: string
   name: string
   subtitle: string
 }
 
-function VoiceCard({ quote, initials, name, subtitle }: VoiceCardProps) {
+function VoiceCard({ quote, name, subtitle }: VoiceCardProps) {
   return (
-    <article className="rounded-3xl bg-cream p-5 sm:p-6 flex flex-col gap-4 shadow-sm">
+    <article className="flex flex-col gap-4">
       <Quote className="w-6 h-6 text-amber" fill="currentColor" />
-      <p className="text-sm sm:text-base text-ink leading-relaxed">"{quote}"</p>
-      <div className="flex items-center gap-3 mt-1">
-        <div className="flex items-center justify-center w-10 h-10 bg-cream-2 rounded-full flex-none">
-          <span className="text-xs font-semibold text-muted">{initials}</span>
-        </div>
-        <div className="flex flex-col">
-          <span className="text-sm font-semibold text-ink leading-tight">{name}</span>
-          <span className="text-xs text-muted">{subtitle}</span>
-        </div>
+      <p className="font-serif text-lg sm:text-xl text-ink leading-snug" style={{ fontVariationSettings: '"opsz" 36, "SOFT" 50, "WONK" 0' }}>
+        "{quote}"
+      </p>
+      <div className="flex flex-col">
+        <span className="text-sm font-semibold text-ink leading-tight">{name}</span>
+        <span className="text-xs text-muted italic">{subtitle}</span>
       </div>
     </article>
   )
@@ -608,7 +611,7 @@ function ActionCard({ Icon, label, description, href, to, external }: ActionCard
     </>
   )
   const className =
-    'group rounded-2xl bg-olive-2 hover:bg-ink transition-colors p-4 sm:p-5 text-left block shadow-lg'
+    'group rounded-2xl bg-olive-2 hover:bg-ink transition-colors p-4 sm:p-5 text-left block'
   if (to) {
     return (
       <Link to={to} className={className}>

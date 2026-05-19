@@ -38,11 +38,12 @@ export default function SuggestPage() {
 
   if (status === 'sent') {
     return (
-      <div className="max-w-md w-full mx-auto p-4 sm:p-6 text-center">
+      <div className="w-full px-4 sm:px-8 lg:px-12 pt-16 pb-20">
+        <div className="max-w-md mx-auto text-center">
         <div className="w-14 h-14 mx-auto rounded-full bg-olive grid place-items-center">
           <Check className="w-6 h-6 text-cream" />
         </div>
-        <h1 className="text-2xl font-bold mt-4 tracking-tight">Thanks for the tip</h1>
+        <h1 className="font-serif text-3xl sm:text-4xl font-semibold mt-5 tracking-tight leading-tight">Thanks for the tip</h1>
         <p className="text-ink-2 mt-3 leading-relaxed">
           Your email client should have opened with the details pre-filled. Hit send and
           we'll review it before adding it to the map. If nothing opened, you can send the
@@ -57,26 +58,32 @@ export default function SuggestPage() {
         >
           Back to the map <ArrowRight className="w-4 h-4" />
         </Link>
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="max-w-md w-full mx-auto p-4 sm:p-6">
-      <header className="mb-6">
-        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">Suggest a drop-off</h1>
+    <div className="w-full px-4 sm:px-8 lg:px-12 pt-12 sm:pt-16 lg:pt-20 pb-20">
+      <div className="max-w-md mx-auto">
+      <header className="mb-8">
+        <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-olive-2 mb-3">
+          Tip us off
+        </p>
+        <h1 className="font-serif text-3xl sm:text-4xl font-semibold tracking-tight leading-[1.05]">Suggest a drop-off</h1>
         <p className="text-sm sm:text-base text-ink-2 mt-2 leading-relaxed">
           Know a civic amenity site, bring centre or collector that takes household cooking oil?
           Tell us and we'll add it to the map after a quick check.
         </p>
-        <div className="mt-4 flex gap-2 items-start text-xs text-muted bg-cream-2/60 border border-line/60 rounded-2xl p-3 leading-relaxed">
-          <Mail className="w-4 h-4 text-olive-2 mt-0.5 flex-none" />
-          <p>
-            Hitting submit opens your email client with the details pre-filled, addressed to{' '}
-            <a className="underline" href="mailto:contact@oilcycle.ie">contact@oilcycle.ie</a>.
+        <p className="mt-4 flex gap-2 items-start text-xs text-muted leading-relaxed italic">
+          <Mail className="w-3.5 h-3.5 text-olive-2 mt-0.5 flex-none not-italic" />
+          <span>
+            Hitting submit opens your email client with the details pre-filled,
+            addressed to{' '}
+            <a className="underline not-italic" href="mailto:contact@oilcycle.ie">contact@oilcycle.ie</a>.
             We review before publishing.
-          </p>
-        </div>
+          </span>
+        </p>
       </header>
 
       <form onSubmit={submit} className="flex flex-col gap-4">
@@ -148,9 +155,10 @@ export default function SuggestPage() {
         .input:focus {
           outline: none;
           border-color: var(--color-olive);
-          box-shadow: 0 0 0 3px rgb(31 107 58 / 0.2);
+          box-shadow: 0 0 0 3px rgb(61 91 70 / 0.2);
         }
       `}</style>
+      </div>
     </div>
   )
 }

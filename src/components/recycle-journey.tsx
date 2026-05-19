@@ -62,14 +62,6 @@ export function RecycleJourney() {
           className="absolute inset-x-0 top-[22px] sm:top-[28px] w-full h-[60px] pointer-events-none overflow-visible"
           aria-hidden="true"
         >
-          <defs>
-            <radialGradient id="rj-drop" cx="0.35" cy="0.35" r="0.7">
-              <stop offset="0%" stopColor="#fde68a" />
-              <stop offset="60%" stopColor="#f0c419" />
-              <stop offset="100%" stopColor="#a87d05" />
-            </radialGradient>
-          </defs>
-
           <path
             id="rj-path"
             d={PATH_D}
@@ -80,7 +72,7 @@ export function RecycleJourney() {
             opacity="0.45"
           />
 
-          <circle r="7" fill="url(#rj-drop)" className="drop">
+          <circle r="6" fill="var(--color-amber)" className="drop">
             <animateMotion
               dur="9s"
               repeatCount="indefinite"
